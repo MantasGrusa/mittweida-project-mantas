@@ -1,0 +1,66 @@
+.map-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    height: 100vh;
+    background-color: #002b20; /* dark green backdrop */
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.map-card {
+    background-color: #014d3b;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.location-title {
+    background-color: #01392d;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    z-index: 0;
+}
+
+.location-address {
+    background-color: #01392d;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.qr-button {
+    background-color: #012d22;
+    border: none;
+    border-radius: 16px;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.qr-button img {
+    width: 40px;
+    height: 40px;
+}

@@ -1,0 +1,54 @@
+.start-exploring-button {
+    background: linear-gradient(to right, #059669, #10b981);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: 1rem 3rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 33.333%;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.start-exploring-button:hover {
+    background: linear-gradient(to right, #047857, #059669);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.start-exploring-button:active {
+    background: linear-gradient(to right, #065f46, #047857);
+    transform: translate(-50%, -50%) scale(0.95);
+}
+.start-exploring-button:focus {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.5);
+}
+
+.start-exploring-button.pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.start-exploring-button.pulse:hover {
+    animation: none;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}

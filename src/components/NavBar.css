@@ -1,0 +1,31 @@
+.navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.spline-text {
+    width: 140px;     /* Adjust depending on your Spline export */
+    height: 40px;
+    pointer-events: none;
+    margin-right: 1rem;
+}
+
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    margin-left: 1rem;
+}
