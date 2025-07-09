@@ -20,7 +20,6 @@ export default function RoutingControl({ waypoints }: RoutingControlProps) {
             show: false,
             addWaypoints: false,
             waypointMode: "snap",
-            // @ts-expect-error property is not defined in the type
             draggableWaypoints: false,
             fitSelectedRoutes: true,
             showAlternatives: true,

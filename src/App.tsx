@@ -6,8 +6,10 @@ import SplineBackground from "./components/Spline/SplineAnimation";
 import StarterPage from "./Pages/Starter/StarterPage.tsx";
 import AboutPage from "./Pages/About/AboutPage.tsx";
 import SelectionCat from "./Pages/Selection/SelectionCat.tsx";
-import LocationDetail from "./components/Location/LocationDetail.tsx";
-import MapView from "./components/Location/MapView.tsx";
+import LocationDetail from "./Pages/Location/LocationDetail.tsx";
+import MapView from "./Pages/Location/MapView.tsx";
+import QRPage from "./Pages/QR/qrPage";
+
 
 function App() {
     const [showSplineLink, setShowSplineLink] = useState(true);
@@ -39,6 +41,9 @@ function App() {
                 <Route path="/map/sports" component={MapView} />
                 <Route path="/map/Nightlife" component={MapView} />
                 <Route path="/map/culture" component={MapView} />
+
+                <Route path="/qr" component={QRPage} />   {/* ✅ New QR Route */}
+
                 <Route path="/">
                     {() => {
                         console.log("🏠 Root route matched");
@@ -55,12 +60,12 @@ function App() {
                                         SplineLink is hidden. Current location: {location}
                                     </div>
                                 )}
-
                             </>
                         );
                     }}
                 </Route>
             </Switch>
+
             <SplineBackground />
         </>
     );

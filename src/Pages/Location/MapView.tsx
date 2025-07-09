@@ -1,9 +1,8 @@
-
-import { useParams } from 'wouter';
+import { useParams, useLocation } from 'wouter';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './Map.css';
+import '../../components/Map/Map.css';
 
 const coordinates = {
     sports: {
@@ -23,17 +22,22 @@ const coordinates = {
     }
 };
 
-
 const MapView = () => {
     const { category } = useParams();
-    const location = coordinates[category] || coordinates.sports;
+    const [location, setLocation] = useLocation();   // ✅ Fixed: get both location and setLocation
+
+    const locationData = coordinates[category] || coordinates.nightlife;
+
+    const handleQRClick = () => {
+        setLocation('/qr');   // ✅ Fixed: navigate to QR page
+    };
 
     return (
         <div className="map-container">
-            <h2>{location.name}</h2>
+            <h2>{locationData.name}</h2>
 
             <MapContainer
-                center={[location.lat, location.lng]}
+                center={[locationData.lat, locationData.lng]}
                 zoom={15}
                 scrollWheelZoom={true}
                 className="leaflet-container"
@@ -43,25 +47,24 @@ const MapView = () => {
                     attribution='&copy; OpenStreetMap contributors'
                 />
                 <Marker
-                    position={[location.lat, location.lng]}
+                    position={[locationData.lat, locationData.lng]}
                     icon={L.icon({
                         iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41]
                     })}
                 >
-                    <Popup>{location.name}</Popup>
+                    <Popup>{locationData.name}</Popup>
                 </Marker>
             </MapContainer>
 
             <div className="address-box">Address Placeholder</div>
 
-            <button className="qr-button">
+            <button className="qr-button" onClick={handleQRClick}>
                 <img src="/assets/qr-icon.png" alt="QR" />
             </button>
         </div>
     );
-
 };
 
 export default MapView;

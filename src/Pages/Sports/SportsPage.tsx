@@ -1,4 +1,4 @@
-import LocationDetail from "../../components/Location/LocationDetail.tsx";
+import LocationDetail from "../Location/LocationDetail.tsx";
 
 const SportsPage = () => {
     return <LocationDetail category="sports" />;
