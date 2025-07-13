@@ -14,8 +14,8 @@ const StarterButton: React.FC<StarterButtonProps> = ({
         <button
             onClick={onClick}
             className={`start-exploring-button pulse ${className}`}
-        >
-            Start exploring
+        ><p>Start exploring</p>
+
         </button>
     );
 };
