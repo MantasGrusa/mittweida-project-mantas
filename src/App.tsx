@@ -9,6 +9,12 @@ import SelectionCat from "./Pages/Selection/SelectionCat.tsx";
 import LocationDetail from "./Pages/Location/LocationDetail.tsx";
 import MapView from "./Pages/Location/MapView.tsx";
 import QRPage from "./Pages/QR/qrPage";
+import friendsPage from "./Pages/Friends/FriendsPage.tsx";
+import SignUpPageDet from "./Pages/SignUpDet/SignUp.tsx";
+import LoginPageDet from "./Pages/LogInDet/LogIn.tsx";
+import LoginSignUpPage from "./Pages/Details/LogInSignUp.tsx";
+import ProfilePage from "./Pages/Profile/Profile.tsx";
+import JourneyCompletePage from "./Pages/Level/JourneyComplete.tsx";
 
 
 function App() {
@@ -26,8 +32,14 @@ function App() {
         <>
             <Switch>
                 <Route path="/starter" component={StarterPage} />
+                <Route path="/signupdet"  component={SignUpPageDet}/>
+                <Route path="/logindet"  component={LoginPageDet}/>
                 <Route path="/about" component={AboutPage} />
+                <Route path="/friends" component={friendsPage} />
                 <Route path="/selection-cat" component={SelectionCat} />
+                <Route path="/details" component={LoginSignUpPage}/>
+                <Route path="/profile" component={ProfilePage}/>
+                <Route path="/level" component={JourneyCompletePage}/>
                 <Route path="/location/sports">
                     {() => <LocationDetail category="sports" />}
                 </Route>
@@ -51,7 +63,7 @@ function App() {
                             <>
                                 {showSplineLink ? (
                                     <SplineLinkWrapper
-                                        href="/starter"
+                                        href="/details"
                                         scene="https://prod.spline.design/i6L9gJV8TMtupZc8/scene.splinecode"
                                         onClick={handleRemove}
                                     />

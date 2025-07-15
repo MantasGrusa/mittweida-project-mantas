@@ -1,0 +1,222 @@
+/* Profile Page Styles */
+.profile-container {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 24rem;
+    background: rgba(6, 95, 70, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+.profile-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-icon {
+    width: 5rem;
+    height: 5rem;
+    background: rgba(6, 78, 59, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(5, 150, 105, 0.5);
+}
+
+.profile-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #a7f3d0;
+    stroke-width: 1.5;
+}
+
+.profile-name-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-name {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.profile-name:hover {
+    color: #a7f3d0;
+}
+
+.progress-section {
+    margin-bottom: 2rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.progress-label {
+    color: white;
+    font-size: 0.875rem;
+}
+
+.progress-track {
+    width: 100%;
+    background: rgba(6, 78, 59, 0.6);
+    border-radius: 9999px;
+    height: 0.75rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #34d399 0%, #6ee7b7 100%);
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.3);
+}
+
+.stats-section {
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    color: white;
+    font-size: 1rem;
+}
+
+.stat-value {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.back-button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-button {
+    width: 3rem;
+    height: 3rem;
+    background: #10b981;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #34d399;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.back-button:active {
+    transform: scale(0.95);
+}
+
+.back-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    stroke-width: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .profile-container {
+        padding: 0.5rem;
+    }
+
+    .profile-card {
+        padding: 1.5rem;
+    }
+
+    .profile-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .profile-icon svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .profile-name {
+        font-size: 1.125rem;
+    }
+}
+
+/* Animation for progress bar */
+@keyframes progressFill {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--progress-width);
+    }
+}
+
+.progress-fill-animated {
+    animation: progressFill 1s ease-out;
+}
+
+/* Hover effects */
+.profile-card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+/* Focus states for accessibility */
+.profile-name:focus,
+.back-button:focus {
+    outline: 2px solid #34d399;
+    outline-offset: 2px;
+}
+
+/* Loading state for profile icon */
+.profile-icon-loading {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}

@@ -6,7 +6,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e5f4f 0%, #2d7a5f 100%);
+
     padding: 40px 20px 60px 20px;
     box-sizing: border-box;
 }

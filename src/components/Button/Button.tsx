@@ -1,17 +1,25 @@
-import type { FC } from "react";
+import React from "react";
+import "../../Pages/Details/Button.css";
 
 interface ButtonProps {
-    label: string;
-    onClickHandler: (text: string) => void;
+    onClick?: () => void;
+    className?: string;
+    children: React.ReactNode; // ✅ Add this
 }
 
-export const Button: FC<ButtonProps> = ({ label, onClickHandler }) => {
+const Button: React.FC<ButtonProps> = ({
+                                           onClick,
+                                           className = "",
+                                           children // ✅ Use this for the button label
+                                       }) => {
     return (
         <button
-            className="fancy-button"
-            onClick={() => onClickHandler("hello!!")}
+            onClick={onClick}
+            className={`start-exploring-button pulse ${className}`}
         >
-            {label.toUpperCase()}
+            {children}
         </button>
     );
 };
+
+export default Button;

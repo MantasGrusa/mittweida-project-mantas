@@ -1,12 +1,16 @@
 import { useState } from "react";
 import BarcodeScanner from "react-qr-barcode-scanner";
+import {useLocation} from "wouter";
 
 function QRScanner() {
+    const [, setLocation] = useLocation();
     const [data, setData] = useState("No QR code detected");
 
     const handleUpdate = (err, result) => {
         if (result) {
+            setLocation("/level");
             setData(result.text);
+            console.log(result.text);
         } else if (err) {
             setData("Error reading QR code");
         }
@@ -21,8 +25,10 @@ function QRScanner() {
                     height={400}
                     onUpdate={handleUpdate}
                 />
+
                 <p className="scanner-result">{data}</p>
             </div>
+
         </div>
     );
 }

@@ -1,0 +1,69 @@
+.SignUpbutton,
+.LogInbutton {
+    background: linear-gradient(to right, #059669, #10b981);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: 1.5rem 2rem;        /* Increased height (1.5rem), reduced width (2rem) */
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    width: 100%;
+    position: relative;          /* Added to ensure proper stacking */
+    z-index: 1;                  /* Added to prevent overlapping issues */
+    margin: 0.5rem auto;         /* Changed to center with auto margins */
+    display: block;              /* Ensure block display for centering */
+}
+
+.SignUpbutton:hover,
+.LogInbutton:hover {
+    background: linear-gradient(to right, #047857, #059669);
+
+    box-shadow: 0 15px 25px -3px rgba(0, 0, 0, 0.15),
+    0 8px 10px -2px rgba(0, 0, 0, 0.08);
+}
+
+.SignUpbutton:active,
+.LogInbutton:active {
+    background: linear-gradient(to right, #065f46, #047857);
+    transform: translateY(0px);   /* Return to original position */
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.SignUpbutton:focus,
+.LogInbutton:focus {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.5);
+}
+
+/* Additional container styles to ensure proper layout */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;     /* Center vertically */
+    gap: 1rem;                   /* Space between buttons */
+    padding: 1rem;
+    min-height: 100vh;          /* Full viewport height for mobile */
+    width: 100%;                /* Full width */
+    margin: 0 auto;             /* Center the container */
+    box-sizing: border-box;     /* Include padding in width calculation */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .SignUpbutton,
+    .LogInbutton {
+        padding: 1.25rem 1.5rem; /* Adjusted padding for mobile */
+        font-size: 1rem;        /* Slightly smaller font for mobile */
+    }
+
+    .button-container {
+        padding: 2rem 1rem;     /* More padding on mobile */
+        gap: 1.5rem;           /* Increased gap for better touch targets */
+    }
+}

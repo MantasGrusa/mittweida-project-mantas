@@ -1,0 +1,121 @@
+/* QR Scanner Page Styles */
+.qr-scanner-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.scanner-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+.scanner-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the QR scanner component */
+.scanner-container > div {
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Style the camera/scanner video element */
+.scanner-container video {
+    border-radius: 12px;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.scanner-result {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 20px;
+    word-break: break-all;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Add a subtle animation for the container */
+.scanner-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .scanner-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .scanner-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .scanner-container > div {
+        margin: 15px 0;
+    }
+
+    .scanner-result {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* Additional styling for QR code overlay/targeting */
+.scanner-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Make the scanner container position relative for the overlay */
+.scanner-container {
+    position: relative;
+}
