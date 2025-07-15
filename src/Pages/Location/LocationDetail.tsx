@@ -1,9 +1,12 @@
-
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocation } from 'wouter';
 import './LocationDetail.css';
 
-const LocationDetail = ({ category }) => {
+type LocationCategory = 'sports' | 'nightlife' | 'culture';
+type LocationDetailProps = {
+    category: LocationCategory;
+};
+const LocationDetail = ({ category }: LocationDetailProps) => {
     const [, setLocation] = useLocation();
 
     const handleBackClick = () => {
@@ -16,7 +19,7 @@ const LocationDetail = ({ category }) => {
 
 
     // Sample data based on category
-    const getLocationData = (category) => {
+    const getLocationData = (category: LocationCategory) => {
         const locations = {
             sports: {
                 name: "Sports Arena Complex",

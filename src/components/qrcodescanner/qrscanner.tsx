@@ -6,7 +6,7 @@ function QRScanner() {
     const [, setLocation] = useLocation();
     const [data, setData] = useState("No QR code detected");
 
-    const handleUpdate = (err, result) => {
+    const handleUpdate = (err:any, result:any) => {
         if (result) {
             setLocation("/level");
             setData(result.text);

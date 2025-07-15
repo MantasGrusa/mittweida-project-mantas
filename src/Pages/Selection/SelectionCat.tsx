@@ -13,7 +13,7 @@ const SelectionCat = () => {
         { id: 3, title: 'Culture', route: '/location/culture' }
     ];
 
-    const handleCardClick = (category) => {
+    const handleCardClick = (category:any) => {
         setSelectedCard(category.id);
         // Navigate to the specific location page
         setLocation(category.route);

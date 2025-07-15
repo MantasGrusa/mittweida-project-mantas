@@ -22,14 +22,18 @@ const coordinates = {
     }
 };
 
-const MapView = () => {
-    const { category } = useParams();
-    const [location, setLocation] = useLocation();   // ✅ Fixed: get both location and setLocation
+type LocationCategory = keyof typeof coordinates;
 
-    const locationData = coordinates[category] || coordinates.nightlife;
+const MapView = () => {
+    const { category } = useParams<{ category: LocationCategory }>();
+    const [,setLocation] = useLocation();
+    
+    const locationData = category && coordinates[category as LocationCategory] 
+        ? coordinates[category as LocationCategory]
+        : coordinates.nightlife;
 
     const handleQRClick = () => {
-        setLocation('/qr');   // ✅ Fixed: navigate to QR page
+        setLocation('/qr');   
     };
 
     return (

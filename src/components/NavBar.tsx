@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from "wouter";
-import Spline from '@splinetool/react-spline';
 import SplineHome from "./Spline/SplineHome.tsx";
 import SplineAbout from "./Spline/SplineAbout.tsx";
 import SplineMenuIcon from "./Spline/SplineMenuIcon.tsx";
@@ -22,7 +21,7 @@ export default function NavBar() {
                 onClick={toggleMenu}
                 aria-label="Toggle navigation menu"
             >
-                <SplineMenuIcon isOpen={isOpen} />
+                <SplineMenuIcon/>
             </button>
 
             {/* Navigation Links */}

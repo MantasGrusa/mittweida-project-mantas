@@ -12,7 +12,7 @@ interface ProfileData {
 }
 
 const ProfilePage: React.FC = () => {
-    const [profile, setProfile] = useState<ProfileData>({
+    const [profile] = useState<ProfileData>({
         name: "Profile Name",
         progress: 15,
         friends: 5,

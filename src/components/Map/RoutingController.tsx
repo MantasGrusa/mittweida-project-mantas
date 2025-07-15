@@ -4,6 +4,9 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 
 
+
+
+
 interface RoutingControlProps {
     waypoints: [number, number][];
 }
@@ -14,7 +17,7 @@ export default function RoutingControl({ waypoints }: RoutingControlProps) {
     useEffect(() => {
         if (!map) return;
 
-        const routingControl = L.Routing.control({
+        const routingControl = (L as any).Routing.control({
             waypoints: waypoints.map(([lat, lng]) => L.latLng(lat, lng)),
             routeWhileDragging: false,
             show: false,
