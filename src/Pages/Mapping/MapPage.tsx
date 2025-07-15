@@ -1,8 +1,9 @@
 import MapWidget from "../../components/Map/MapWidget.tsx";
-const mapPage(){
-    return(
-        <MapWidget/>
-    )
+
+function MapPage() {
+    return (
+        <MapWidget />
+    );
 }
 
-export default mapPage
+export default MapPage;
