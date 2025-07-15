@@ -1,5 +1,5 @@
-// App.tsx
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch, useLocation, Router } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import SplineLinkWrapper from "./components/Spline/SplineLinkWrapper";
 import { useState } from "react";
 import SplineBackground from "./components/Spline/SplineAnimation";
@@ -16,7 +16,6 @@ import LoginSignUpPage from "./Pages/Details/LogInSignUp.tsx";
 import ProfilePage from "./Pages/Profile/Profile.tsx";
 import JourneyCompletePage from "./Pages/Level/JourneyComplete.tsx";
 
-
 function App() {
     const [showSplineLink, setShowSplineLink] = useState(true);
     const [location] = useLocation();
@@ -29,11 +28,11 @@ function App() {
     };
 
     return (
-        <>
+        <Router hook={useHashLocation}>
             <Switch>
                 <Route path="/starter" component={StarterPage} />
-                <Route path="/signupdet"  component={SignUpPageDet}/>
-                <Route path="/logindet"  component={LoginPageDet}/>
+                <Route path="/signupdet" component={SignUpPageDet}/>
+                <Route path="/logindet" component={LoginPageDet}/>
                 <Route path="/about" component={AboutPage} />
                 <Route path="/friends" component={friendsPage} />
                 <Route path="/selection-cat" component={SelectionCat} />
@@ -54,7 +53,7 @@ function App() {
                 <Route path="/map/Nightlife" component={MapView} />
                 <Route path="/map/culture" component={MapView} />
 
-                <Route path="/qr" component={QRPage} />   {/* ✅ New QR Route */}
+                <Route path="/qr" component={QRPage} />
 
                 <Route path="/">
                     {() => {
@@ -79,7 +78,7 @@ function App() {
             </Switch>
 
             <SplineBackground />
-        </>
+        </Router>
     );
 }
 
