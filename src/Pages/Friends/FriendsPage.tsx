@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import InputField from "../../components/Input/InputFieldDetails.tsx";
 import FriendCard from "../../components/Cards/FriendCard.tsx";
 import NavBar from "../../components/NavBar.tsx";
+import {API_BASE_URL} from "../../config.ts";
 
 interface User {
     id: string;
@@ -39,7 +40,7 @@ const FriendsPage: React.FC = () => {
             }
 
             try {
-                const response = await fetch(`http://localhost:3000/users/friends/${user.id}`);
+                const response = await fetch(`${API_BASE_URL}/users/friends/${user.id}`);
 
                 if (response.ok) {
                     const friendsData = await response.json();
@@ -65,7 +66,7 @@ const FriendsPage: React.FC = () => {
         setAddingFriend(true);
 
         try {
-            const response = await fetch(`http://localhost:3000/users/friends/${user.id}`, {
+            const response = await fetch(`${API_BASE_URL}/users/friends/${user.id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +98,7 @@ const FriendsPage: React.FC = () => {
         if (!user) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/users/friends/challenge/${user.id}/${friend.friendId}`, {
+            const response = await fetch(`${API_BASE_URL}/users/friends/challenge/${user.id}/${friend.friendId}`, {
                 method: 'POST',
             });
 
@@ -125,7 +126,7 @@ const FriendsPage: React.FC = () => {
         if (!confirmRemove) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/users/friends/${user.id}/${friend.friendId}`, {
+            const response = await fetch(`${API_BASE_URL}/users/friends/${user.id}/${friend.friendId}`, {
                 method: 'DELETE',
             });
 

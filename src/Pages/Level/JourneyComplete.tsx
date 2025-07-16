@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SplineTrophy from "../../components/Spline/SplineTrophy.tsx";
 import { useLocation } from 'wouter';
+import {API_BASE_URL} from "../../config.ts";
+
 
 interface User {
     id: string;
@@ -65,7 +67,7 @@ const JourneyCompletePage: React.FC = () => {
             }
 
             try {
-                const response = await fetch(`http://localhost:3000/users/progress/${user.id}`);
+                const response = await fetch(`${API_BASE_URL}/users/progress/${user.id}`);
 
                 if (response.ok) {
                     const progressData = await response.json();

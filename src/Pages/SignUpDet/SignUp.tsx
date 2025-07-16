@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputField from "../../components/Input/InputFieldDetails.tsx";
 import { useLocation } from "wouter";
 import "./signup.css";
+import {API_BASE_URL} from "../../config.ts";
 
 const SignUpPageDet: React.FC = () => {
     const [Username, setUsername] = useState("");
@@ -27,7 +28,7 @@ const SignUpPageDet: React.FC = () => {
         setError("");
 
         try {
-            const response = await fetch('http://localhost:3000/users/signup', {
+            const response = await fetch(`${API_BASE_URL}/users/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

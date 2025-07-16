@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
 import './LocationDetail.css';
+import {API_BASE_URL} from "../../config.ts";
 
 type LocationCategory = 'sports' | 'nightlife' | 'culture';
 
@@ -63,7 +64,7 @@ const LocationDetail = ({ category }: LocationDetailProps) => {
 
             try {
                 const response = await fetch(
-                    `http://localhost:3000/users/location/random?category=${category}&userId=${user.id}`
+                    `${API_BASE_URL}/users/location/random?category=${category}&userId=${user.id}`
                 );
 
                 if (response.ok) {
