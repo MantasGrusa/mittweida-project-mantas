@@ -14,10 +14,17 @@
     "createdAt": "2025-07-16T02:31:42.954Z"
   },
   {
-    "id": "1752683007511",
-    "username": "SASA",
-    "email": "sasa@example.com",
-    "password": "$2b$10$VEOdNT1yK6T58HYiCMpKmevaFWsCxLvaIAX9bEJuriJc332lj9zNm",
-    "createdAt": "2025-07-16T16:23:27.511Z"
+    "id": "1752700386763",
+    "username": "test1",
+    "email": "test1@example.com",
+    "password": "$2b$10$F1AjJTd4BShZsozDJ28YmudFnDJsXr/yI.zhgCPUgFofORMm//V.C",
+    "createdAt": "2025-07-16T21:13:06.763Z"
+  },
+  {
+    "id": "1752700408470",
+    "username": "test5",
+    "email": "test5@example.com",
+    "password": "$2b$10$FLRennTVgq7oQxrNFxS5AuJCI.aGfmhn5wAVQ2QNaZn2ruVXFm9U2",
+    "createdAt": "2025-07-16T21:13:28.470Z"
   }
 ]
