@@ -101,24 +101,6 @@ export default function InteractiveSpline({
                     pointerEvents: "auto" // Ensure pointer events work
                 }}
             />
-
-            {/* Mobile fallback button - shows only on small screens */}
-            <div className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none">
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        console.log("📱 Fallback button clicked!");
-                        if (onClick) onClick();
-                    }}
-                    className="pointer-events-auto bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full border border-white/30 hover:bg-white/30 transition-all"
-                    style={{
-                        zIndex: 1000,
-                        touchAction: "manipulation"
-                    }}
-                >
-                    Tap to Continue
-                </button>
-            </div>
         </div>
     );
 }
