@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1752632613742",
+    "username": "test",
+    "email": "test@example.com",
+    "password": "$2b$10$7IMKb9Syl6filx6x0UX9yeQ2YDUS.VYupyus7Xdobe8HUstHqnLw6",
+    "createdAt": "2025-07-16T02:23:33.742Z"
+  },
+  {
+    "id": "1752633102954",
+    "username": "artur",
+    "email": "artur@example.com",
+    "password": "$2b$10$nOYygWE33WMNSFzEJQSNWuyKeh.fig7/bJBQVCsYL9eK9J0aiIcne",
+    "createdAt": "2025-07-16T02:31:42.954Z"
+  }
+]
