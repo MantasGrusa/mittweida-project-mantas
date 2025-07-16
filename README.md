@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+# Location-Based Game - Mittweida Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack location-based exploration game built with React, TypeScript, and NestJS.
 
-Currently, two official plugins are available:
+## 🎮 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication (signup, login, profile)
+- 9 real Mittweida locations across 3 categories (Sports, Nightlife, Culture)
+- QR code scanning for location completion
+- Progress tracking and achievements
+- Friends system with challenges
+- Interactive maps with real coordinates
 
-## Expanding the ESLint configuration
+## 🚀 How to Run
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js 16+
+- Modern web browser with camera support
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Backend Setup
+```bash
+cd backend
+npm install
+npm run start:dev
 ```
+✅ **Backend:** `http://localhost:3000`  
+✅ **API Documentation:** `http://localhost:3000/api`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Frontend Setup
+```bash
+cd src
+npm install  
+npm run dev
 ```
+✅ **Frontend:** `http://localhost:5173`  
+✅ **Network URL:** `http://192.168.x.x:5173` (for mobile testing)
+
+## 🎯 How to Play
+
+1. **Sign up** for an account
+2. **Choose category** (Sports, Nightlife, Culture)
+3. **Get random location** in Mittweida
+4. **Navigate** using the interactive map
+5. **Scan QR code** at the location to complete it
+6. **Track progress** and unlock achievements
+
+## 📱 QR Codes
+
+**QR codes for testing are included in the `qr-codes/` folder.**
+
+Each location has a specific QR code:
+- `SPORTS_001_QR` - Mittweida Sports Center
+- `SPORTS_002_QR` - Zschopauer Mulde Riverside Trail
+- `SPORTS_003_QR` - Mittweida Football Stadium
+- `NIGHTLIFE_001_QR` - Studentenclub Red
+- `NIGHTLIFE_002_QR` - Café Bar Central
+- `NIGHTLIFE_003_QR` - Ratskeller Mittweida
+- `CULTURE_001_QR` - Mittweida Castle Museum
+- `CULTURE_002_QR` - St. Laurentius Church
+- `CULTURE_003_QR` - University Gallery
+
+## 🧪 Testing
+
+1. **Start both backend and frontend**
+2. **Create an account** and choose a category
+3. **Note the expected QR code** shown in the scanner
+4. **Use corresponding QR image** from `qr-codes/` folder
+5. **Scan with your device camera** or display on another screen
+
+## 📚 API Documentation
+
+Full interactive API documentation available at: `http://localhost:3000/api`
+
+### Authentication Endpoints
+- `POST /users/signup` - Create a new user account
+- `POST /users/login` - Login user
+
+### Game Endpoints
+- `GET /users/location/random` - Get random location by category
+- `POST /users/scan-qr/{userId}` - Scan QR code to complete location
+- `GET /users/progress/{userId}` - Get user progress and completed locations
+
+### User Management
+- `GET /users` - Get all users
+- `GET /users/{id}` - Get user by ID
+- `PATCH /users/{id}` - Update user
+- `DELETE /users/{id}` - Delete user
+
+### Friends System
+- `GET /users/friends/{userId}` - Get user friends
+- `POST /users/friends/{userId}` - Add friend by username
+- `DELETE /users/friends/{userId}/{friendId}` - Remove friend
+- `POST /users/friends/challenge/{userId}/{friendId}` - Challenge a friend
+
+## 🏗️ Tech Stack
+
+**Frontend:** React, TypeScript, Vite, Tailwind CSS, Leaflet Maps  
+**Backend:** NestJS, TypeScript, File-based JSON storage  
+**Testing:** Vitest for component testing
