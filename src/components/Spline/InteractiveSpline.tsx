@@ -30,6 +30,8 @@ export default function InteractiveSpline({
             canvases.forEach(canvas => {
                 canvas.style.cursor = 'pointer';
                 canvas.style.setProperty('cursor', 'pointer', 'important');
+                // Add mobile-friendly styles
+                canvas.style.touchAction = 'manipulation';
             });
         }, 100);
 
@@ -50,8 +52,19 @@ export default function InteractiveSpline({
         });
     };
 
-    // Handle both mouse and touch events
-    const handleInteraction = () => {
+    // Handle both mouse and touch events with better mobile support
+    const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+        e.preventDefault(); // Prevent default touch behaviors
+        console.log("🎮 Spline interaction triggered!");
+        if (onClick) {
+            onClick();
+        }
+    };
+
+    // Handle touch events specifically
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        e.preventDefault();
+        console.log("📱 Touch end on Spline!");
         if (onClick) {
             onClick();
         }
@@ -63,20 +76,49 @@ export default function InteractiveSpline({
             style={{
                 cursor: "pointer !important",
                 touchAction: "manipulation", // Prevents zoom and improves touch response
+                WebkitTouchCallout: "none", // Prevents callout on iOS
+                WebkitUserSelect: "none", // Prevents text selection
+                userSelect: "none",
                 ...style
             }}
             onMouseEnter={handleMouseEnter}
             onClick={handleInteraction}
-            onTouchStart={handleInteraction} // Add touch support
+            onTouchStart={(e) => {
+                console.log("📱 Touch start on Spline!");
+                e.preventDefault();
+            }}
+            onTouchEnd={handleTouchEnd}
         >
             <Spline
                 scene={scene}
                 className="w-full h-full cursor-pointer"
                 style={{
                     cursor: "pointer !important",
-                    touchAction: "none" // Prevents mobile scrolling interference
+                    touchAction: "manipulation", // Changed from "none" to "manipulation"
+                    WebkitTouchCallout: "none",
+                    WebkitUserSelect: "none",
+                    userSelect: "none",
+                    pointerEvents: "auto" // Ensure pointer events work
                 }}
             />
+
+            {/* Mobile fallback button - shows only on small screens */}
+            <div className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none">
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        console.log("📱 Fallback button clicked!");
+                        if (onClick) onClick();
+                    }}
+                    className="pointer-events-auto bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full border border-white/30 hover:bg-white/30 transition-all"
+                    style={{
+                        zIndex: 1000,
+                        touchAction: "manipulation"
+                    }}
+                >
+                    Tap to Continue
+                </button>
+            </div>
         </div>
     );
 }
