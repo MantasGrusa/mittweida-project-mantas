@@ -7,13 +7,8 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  base: '/mittweida-project-mantas/',
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: 'docs',
   },
-  server: {
-    port: 5173,
-    host: true
-  }
+  base: './',
 })
