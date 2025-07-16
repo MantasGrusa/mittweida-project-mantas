@@ -1,3 +1,6 @@
 button{
     background: linear-gradient(to right, #059669, #10b981);
 }
+.removeButton{
+    background: linear-gradient(to right, #df0707, #ff0202);
+}

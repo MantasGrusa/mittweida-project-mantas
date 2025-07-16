@@ -10,7 +10,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
                                            onClick,
                                            className = "",
-                                           children // ✅ Use this for the button label
+                                           children
                                        }) => {
     return (
         <button

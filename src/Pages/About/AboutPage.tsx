@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar.tsx";
 
 const About: React.FC = () => {
-    const fullText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+    const fullText = `Welcome to Explore Mittweida, a fun and interactive game-like app created by a student, for students! Whether you're just arriving in Mittweida for your Erasmus semester or already getting to know the town, this app is your perfect companion.
+
+What is it?
+Explore Mittweida is more than just a guide — it's a game-inspired experience that helps Erasmus students discover the best of what this small yet lively town has to offer. Complete challenges, unlock hidden spots, and connect with other international students as you explore your new home in a fun and engaging way.`;
 
     const [displayedText, setDisplayedText] = useState("");
 

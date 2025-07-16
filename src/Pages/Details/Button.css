@@ -1,9 +1,10 @@
+
 .SignUpbutton,
 .LogInbutton {
     background: linear-gradient(to right, #059669, #10b981);
     color: white;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 1.0rem;
     padding: 1.5rem 2rem;        /* Increased height (1.5rem), reduced width (2rem) */
     border-radius: 9999px;
     border: none;
@@ -13,6 +14,7 @@
     transition: all 0.2s ease-in-out;
     outline: none;
     width: 100%;
+    height: 30%;
     position: relative;          /* Added to ensure proper stacking */
     z-index: 1;                  /* Added to prevent overlapping issues */
     margin: 0.5rem auto;         /* Changed to center with auto margins */

@@ -1,57 +1,186 @@
-import {MapContainer, Polyline} from "react-leaflet";
-import {Marker} from "react-leaflet";
-import {TileLayer} from "react-leaflet";
-import {Popup} from "react-leaflet";
-import '../styles/mapwidget.css'
-import RoutingControl from "./RoutingController.tsx";
+import { useParams, useLocation } from 'wouter';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useState, useEffect } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import '../../components/Map/Map.css';
 
-const position: [number, number] = [50.9853, 12.9800]
+interface Location {
+    id: string;
+    name: string;
+    category: 'sports' | 'nightlife' | 'culture';
+    latitude: number;
+    longitude: number;
+    description: string;
+    qrCode: string;
+    imageUrl: string;
+}
 
-const path: [number,number][] = [
-    [50.9853, 12.9800],
-    [50.9853, 12.9910]
-]
+// Fallback coordinates if no location data is found
+const fallbackCoordinates = {
+    sports: {
+        name: "Sports Location",
+        lat: 50.9866,
+        lng: 12.9714,
+    },
+    nightlife: {
+        name: "Nightlife Location",
+        lat: 50.9866,
+        lng: 12.9714,
+    },
+    culture: {
+        name: "Cultural Location",
+        lat: 50.9866,
+        lng: 12.9714,
+    }
+};
 
-const airtravel: [number,number][] = [
-    [52.3650, 13.5010],
-    [12.9940, 80.1707]
-]
+type LocationCategory = keyof typeof fallbackCoordinates;
 
-export default function MapWidget () {
+const MapView = () => {
+    const { category } = useParams<{ category: LocationCategory }>();
+    const [, setLocation] = useLocation();
+    const [locationData, setLocationData] = useState<Location | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Get the location data stored by LocationDetail page
+        const storedLocation = localStorage.getItem('currentLocation');
+
+        if (storedLocation) {
+            try {
+                const location = JSON.parse(storedLocation);
+                setLocationData(location);
+            } catch (error) {
+                console.error('Error parsing stored location:', error);
+            }
+        }
+        setLoading(false);
+    }, []);
+
+    const handleQRClick = () => {
+        // Store the QR code for the scanner page
+        if (locationData) {
+            localStorage.setItem('expectedQRCode', locationData.qrCode);
+            localStorage.setItem('currentLocationId', locationData.id);
+        }
+        setLocation('/qr');
+    };
+
+    const handleBackClick = () => {
+        console.log("=== BACK BUTTON FUNCTION CALLED ===");
+        window.location.href = "/#/selection-cat";
+    };
+
+    // Use real location data if available, otherwise fall back to category defaults
+    const displayData = locationData ? {
+        name: locationData.name,
+        lat: locationData.latitude,
+        lng: locationData.longitude,
+        description: locationData.description
+    } : (category && fallbackCoordinates[category]
+        ? fallbackCoordinates[category]
+        : fallbackCoordinates.sports);
+
+    if (loading) {
+        return (
+            <div className="map-container">
+                <h2>Loading map...</h2>
+                <div className="loading-message">
+                    <p>Preparing your location...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
+        <div className="map-container">
+            <button
+                onClick={() => {
+                    alert("BACK BUTTON CLICKED!");
+                    console.log("=== BACK BUTTON CLICKED ===");
+                    handleBackClick();
+                }}
+                style={{
+                    position: 'fixed',
+                    top: '20px',
+                    left: '20px',
+                    zIndex: 99999,
+                    background: 'red',
+                    color: 'white',
+                    border: '5px solid yellow',
+                    borderRadius: '10px',
+                    width: '100px',
+                    height: '50px',
+                    cursor: 'pointer',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }}
+            >
+                BACK
+            </button>
 
-        <MapContainer className="map" center={position} zoom={15} scrollWheelZoom={false}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}>
-                <Popup>
-                    Mittweida Town Center <br /> Click here to read more
-                </Popup>
-            </Marker>
+            <h2>{displayData.name}</h2>
 
-            <Marker position={[52.3650, 13.5010]}>
-                <Popup>
-                    Berlin Airport
-                </Popup>
-            </Marker>
+            <MapContainer
+                center={[displayData.lat, displayData.lng]}
+                zoom={15}
+                scrollWheelZoom={true}
+                className="leaflet-container"
+            >
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; OpenStreetMap contributors'
+                />
+                <Marker
+                    position={[displayData.lat, displayData.lng]}
+                    icon={L.icon({
+                        iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41]
+                    })}
+                >
+                    <Popup>
+                        <div>
+                            <strong>{displayData.name}</strong>
+                            {locationData && (
+                                <p style={{ margin: '5px 0', fontSize: '12px' }}>
+                                    {locationData.description}
+                                </p>
+                            )}
+                        </div>
+                    </Popup>
+                </Marker>
+            </MapContainer>
 
-            <Marker position={[12.9940, 80.1707]}>
-                <Popup>
-                    Chennai Airport
-                </Popup>
-            </Marker>
+            <div className="address-box">
+                {locationData ? (
+                    <div>
+                        <strong>Your Destination:</strong>
+                        <br />
+                        {displayData.name}
+                        <br />
+                        <small>Lat: {displayData.lat.toFixed(4)}, Lng: {displayData.lng.toFixed(4)}</small>
+                        {locationData.description && (
+                            <>
+                                <br />
+                                <small>{locationData.description}</small>
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    "Navigate to your destination and scan the QR code!"
+                )}
+            </div>
 
-            <Marker position={[50.9853, 12.9990]} draggable>
-                <Popup>
-                    DRAGGABLE POPUP
-                </Popup>
-            </Marker>
+            <button className="qr-button" onClick={handleQRClick}>
+                <img src="/assets/qr-icon.png" alt="QR" />
+                <span style={{ display: 'block', fontSize: '12px', marginTop: '5px' }}>
+                    Scan QR Code
+                </span>
+            </button>
+        </div>
+    );
+};
 
-            <Polyline positions={airtravel} />
-
-            <RoutingControl waypoints={path}/>
-        </MapContainer>
-    )
-} 
+export default MapView;
