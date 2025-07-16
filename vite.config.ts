@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
@@ -7,13 +8,8 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  base: '/mittweida-project-mantas/',
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: 'docs',
   },
-  server: {
-    port: 5173,
-    host: true
-  }
+  base: './',
 })

@@ -50,32 +50,17 @@ export default function InteractiveSpline({
         });
     };
 
-    // Handle both mouse and touch events
-    const handleInteraction = () => {
-        if (onClick) {
-            onClick();
-        }
-    };
-
     return (
         <div
             className={`cursor-pointer ${className}`}
-            style={{
-                cursor: "pointer !important",
-                touchAction: "manipulation", // Prevents zoom and improves touch response
-                ...style
-            }}
+            style={{ cursor: "pointer !important", ...style }}
             onMouseEnter={handleMouseEnter}
-            onClick={handleInteraction}
-            onTouchStart={handleInteraction} // Add touch support
         >
             <Spline
+                onClick={onClick}
                 scene={scene}
                 className="w-full h-full cursor-pointer"
-                style={{
-                    cursor: "pointer !important",
-                    touchAction: "none" // Prevents mobile scrolling interference
-                }}
+                style={{ cursor: "pointer !important" }}
             />
         </div>
     );
