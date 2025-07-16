@@ -8,5 +8,50 @@
     "userId": "1752632613742",
     "locationId": "sports_002",
     "completedAt": "2025-07-16T02:30:56.146Z"
+  },
+  {
+    "userId": "1752661163261",
+    "locationId": "sports_003",
+    "completedAt": "2025-07-16T10:24:37.944Z"
+  },
+  {
+    "userId": "1752661163261",
+    "locationId": "sports_001",
+    "completedAt": "2025-07-16T10:25:10.759Z"
+  },
+  {
+    "userId": "1752661163261",
+    "locationId": "nightlife_003",
+    "completedAt": "2025-07-16T10:26:14.832Z"
+  },
+  {
+    "userId": "1752661163261",
+    "locationId": "culture_003",
+    "completedAt": "2025-07-16T10:26:44.325Z"
+  },
+  {
+    "userId": "1752667731650",
+    "locationId": "nightlife_003",
+    "completedAt": "2025-07-16T12:10:46.389Z"
+  },
+  {
+    "userId": "1752667731650",
+    "locationId": "sports_002",
+    "completedAt": "2025-07-16T12:11:13.334Z"
+  },
+  {
+    "userId": "1752667731650",
+    "locationId": "sports_001",
+    "completedAt": "2025-07-16T12:12:08.053Z"
+  },
+  {
+    "userId": "1752632613742",
+    "locationId": "nightlife_001",
+    "completedAt": "2025-07-16T12:14:32.617Z"
+  },
+  {
+    "userId": "1752683007511",
+    "locationId": "sports_003",
+    "completedAt": "2025-07-16T16:23:54.690Z"
   }
 ]
