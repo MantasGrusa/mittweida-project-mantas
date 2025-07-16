@@ -7,16 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Enable CORS for frontend
-  app.enableCors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'https://yourusername.github.io',
-      /^http:\/\/192\.168\.\d+\.\d+:5173$/, // Allow any local network IP
-      /^http:\/\/10\.\d+\.\d+\.\d+:5173$/,  // Allow other network ranges
-    ],
-    credentials: true
-  });
+  app.enableCors();
+
   // Global validation pipe
   app.useGlobalPipes(new ValidationPipe());
 
@@ -30,7 +22,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000, '0.0.0.0');
+  await app.listen(3000);
   console.log('Server running on http://localhost:3000');
   console.log('Swagger documentation: http://localhost:3000/api');
 }
