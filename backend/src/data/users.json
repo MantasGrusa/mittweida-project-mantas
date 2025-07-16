@@ -19,5 +19,19 @@
     "email": "sasa@example.com",
     "password": "$2b$10$VEOdNT1yK6T58HYiCMpKmevaFWsCxLvaIAX9bEJuriJc332lj9zNm",
     "createdAt": "2025-07-16T16:23:27.511Z"
+  },
+  {
+    "id": "1752684378918",
+    "username": "mantas",
+    "email": "mantas@example.com",
+    "password": "$2b$10$qvltCWx0SvIwqqb9h.bdce.oAWv8q6V3.VeN4XtgNio7gTaio99v.",
+    "createdAt": "2025-07-16T16:46:18.918Z"
+  },
+  {
+    "id": "1752686446843",
+    "username": "test2",
+    "email": "test2@example.com",
+    "password": "$2b$10$qsGRbDb1WhV1LrnA/J2KsOFcFn5PqdOWeUo26p0HSuiJL9S6lQta6",
+    "createdAt": "2025-07-16T17:20:46.843Z"
   }
 ]

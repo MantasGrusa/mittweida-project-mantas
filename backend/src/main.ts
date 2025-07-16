@@ -7,8 +7,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Enable CORS for frontend
-  app.enableCors();
-
+  app.enableCors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://yourusername.github.io',
+      /^http:\/\/192\.168\.\d+\.\d+:5173$/, // Allow any local network IP
+      /^http:\/\/10\.\d+\.\d+\.\d+:5173$/,  // Allow other network ranges
+    ],
+    credentials: true
+  });
   // Global validation pipe
   app.useGlobalPipes(new ValidationPipe());
 
